@@ -40,6 +40,25 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type='text/javascript'>//<![CDATA[ 
+    $(function(){
+    $('#tweetSubmit').on('click', function(ev) {
+        ev.preventDefault();
+        // Remove existing iframe
+        $('#tweetBtn iframe').remove();
+        // Generate new markup
+        var tweetBtn = $('<a></a>')
+            .addClass('twitter-share-button')
+            .attr('href', 'http://twitter.com/share')
+            .attr('data-url', 'http://test.com')
+            .attr('data-text', $('#tweetText').html());
+        $('#tweetBtn').append(tweetBtn);
+        twttr.widgets.load();
+    });
+
+    });//]]>  
+
+    </script>
   </head>
 
   <body>
@@ -49,19 +68,25 @@
       <form class="form-signin">
         <h2 class="form-signin-heading">Everything is Awesome</h2>
         <label for="inputPrivate" class="sr-only">Private message goes here</label>
-        <input type="text" id="inputPrivate" class="form-control" placeholder="Private message goes here" required autofocus>
-        <label for="inputTweet" class="sr-only">public tweet</label>
-        <input type="text" id="inputTweet" class="form-control" placeholder="your public tweet here" required>
-        <a class="twitter-share-button" href="https://twitter.com/share"
-          data-related="twitterdev"
-          data-size="large"
-          data-count="none">
-        Tweet
-        </a>
-        <!-- Tobias, check out http://jsfiddle.net/LEBz8/1/ for dynamically updaing the link attributes -->
-        <script>
-        window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
-        </script>
+        <input type="text" id="inputPrivate" class="form-control" placeholder="Private message goes here" autofocus>
+        <label for="tweetText" class="sr-only">public tweet</label>
+        <input type="text" id="tweetText" class="form-control" placeholder="your public tweet here" required>
+        <input type="submit" value="Update" id="tweetSubmit">
+        <!-- Tobias, check out http://jsfiddle.net/chris27/DQw5b/4/ and http://jsfiddle.net/LEBz8/1/ for dynamically updaing the link attributes I could not get these to work -->
+        <div id="tweetBtn">
+          <a class="twitter-share-button"
+             href="https://twitter.com/share"
+            data-url="https://dev.twitter.com/web/tweet-button"
+            data-via="your_screen_name"
+            data-text="Checking out this page about the Tweet Button"
+            data-related="twitterdev:Twitter Developer Relations"
+            data-count="none">
+          Tweet
+          </a>
+          <script>
+          window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+          </script>
+         </div>
       </form>
 
     </div> <!-- /container -->
