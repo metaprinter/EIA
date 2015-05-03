@@ -1,4 +1,6 @@
-var dataRef = new Firebase('https://eia.firebaseio.com/'),
+var dataRef = new Firebase('https://eia.firebaseio.com/');
+
+
 
 //http://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript
 function makeURL() {
@@ -11,3 +13,15 @@ function makeURL() {
 
     return text;
 }
+
+
+$("#tweetSubmit").on("click", function(e) {
+	e.preventDefault();
+
+	var secret = $("#inputPrivate").val();
+
+	
+
+	console.log(secret);
+
+})
