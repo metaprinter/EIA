@@ -93,7 +93,9 @@
 		numMessage = stringToNumberArray(message);
 		numKey = stringToNumberArray(key);
 
-		numMessage = addNum(numMessage);
+		// numMessage = addNum(numMessage);
+
+
 
 		//encrypts the original meassage, now all numbers, with the key
 		for (var m = 0; m < numMessage.length;m++) {
@@ -140,7 +142,7 @@
 		//remove spaces
 		message = message.replace( /\s/g, '');
 		message = letterArrayToNumberArray( message );
-		message = removeNum(message);
+		// message = removeNum(message);
 
 		numKey = stringToNumberArray( key );
 

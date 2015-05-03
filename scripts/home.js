@@ -17,11 +17,33 @@ function makeURL() {
 
 $("#tweetSubmit").on("click", function(e) {
 	e.preventDefault();
+	var secret = $("#secret");
+	var confirm = $("#confirm");
+	var cMessage = $("#finalMessage");
+	var secretMessage = $("#inputPrivate").val();
+	var decryptMessage;
 
-	var secret = $("#inputPrivate").val();
+	var url = makeURL();
 
-	
+	var tMessage = '1Everything is awesome - test/'+url+'"</a>'
 
-	console.log(secret);
+	cMessage.append(tMessage);
+
+	 $('#tweetBtn iframe').remove();
+    // Generate new markup
+    var tweetBtn = $('<a></a>')
+        .addClass('twitter-share-button')
+        .attr('href', 'http://twitter.com/share')
+        .attr('data-text', tMessage);
+    $('#tweetBtn').append(tweetBtn);
+    twttr.widgets.load();
+
+	secret.css("display", "none");
+	confirm.css("display", "block");
+
+	encryptMessage = UT.encrypt(secretMessage, "This is a test");
+
+	decryptMessage = UT.decrypt(encryptMessage, "This is a test");
+
 
 })
