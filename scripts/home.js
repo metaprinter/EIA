@@ -1,7 +1,5 @@
 var dataRef = new Firebase('https://eia.firebaseio.com/');
 
-
-
 //http://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript
 function makeURL() {
     var text = '';
@@ -25,7 +23,7 @@ $("#tweetSubmit").on("click", function(e) {
 
 	var url = makeURL();
 
-	var tMessage = '1Everything is awesome - test/'+url+'"</a>'
+	var tMessage = 'Everything is awesome - test/index.html#'+url+'"</a>'
 
 	cMessage.append(tMessage);
 
@@ -39,11 +37,14 @@ $("#tweetSubmit").on("click", function(e) {
     twttr.widgets.load();
 
 	secret.css("display", "none");
-	confirm.css("display", "block");
+	confirm.css("display", "block");''
 
 	encryptMessage = UT.encrypt(secretMessage, "This is a test");
 
-	decryptMessage = UT.decrypt(encryptMessage, "This is a test");
-
+	dataRef.push(
+	{
+		url: url,
+		message: encryptMessage
+	});
 
 })
