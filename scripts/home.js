@@ -12,39 +12,46 @@ function makeURL() {
     return text;
 }
 
+function init() {
 
-$("#tweetSubmit").on("click", function(e) {
-	e.preventDefault();
-	var secret = $("#secret");
-	var confirm = $("#confirm");
-	var cMessage = $("#finalMessage");
-	var secretMessage = $("#inputPrivate").val();
-	var decryptMessage;
+	window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
 
-	var url = makeURL();
+	$("#tweetSubmit").on("click", function(e) {
+		e.preventDefault();
+		var secret = $("#secret");
+		var confirm = $("#confirm");
+		var cMessage = $("#finalMessage");
+		var secretMessage = $("#inputPrivate").val();
+		var decryptMessage;
 
-	var tMessage = 'Everything is awesome - test/index.html#'+url+'"</a>'
+		var url = makeURL();
 
-	cMessage.append(tMessage);
+		var tMessage = 'Everything is awesome - test/index.html#'+url+'"</a>'
 
-	 $('#tweetBtn iframe').remove();
-    // Generate new markup
-    var tweetBtn = $('<a></a>')
-        .addClass('twitter-share-button')
-        .attr('href', 'http://twitter.com/share')
-        .attr('data-text', tMessage);
-    $('#tweetBtn').append(tweetBtn);
-    twttr.widgets.load();
+		cMessage.append(tMessage);
 
-	secret.css("display", "none");
-	confirm.css("display", "block");''
+		 $('#tweetBtn iframe').remove();
+	    // Generate new markup
+	    var tweetBtn = $('<a></a>')
+	        .addClass('twitter-share-button')
+	        .attr('href', 'http://twitter.com/share')
+	        .attr('data-text', tMessage);
+	    $('#tweetBtn').append(tweetBtn);
+	    twttr.widgets.load();
 
-	encryptMessage = UT.encrypt(secretMessage, "This is a test");
+		secret.css("display", "none");
+		confirm.css("display", "block");''
 
-	dataRef.push(
-	{
-		url: url,
-		message: encryptMessage
-	});
+		encryptMessage = UT.encrypt(secretMessage, "This is a test");
 
-})
+		dataRef.push(
+		{
+			url: url,
+			message: encryptMessage
+		});
+
+	})
+
+}
+
+init();

@@ -13,24 +13,26 @@ function getThisURL() {
 }
 
 dataRef.on("value", function(snapshot) {
-  console.log(snapshot.val());
+	console.log(snapshot.val());
 
-  var data =snapshot.val();
-  var url = getThisURL();
+	var data =snapshot.val();
+	var url = getThisURL();
 
-  for (var key in data) {
-   if (data.hasOwnProperty(key)) {
-       var obj = data[key];
+	for (var key in data) {
+		if (data.hasOwnProperty(key)) {
+			var obj = data[key];
 
-       if (obj.url === url) {
+			if (obj.url === url) {
 
-       	console.log("right")
-       } else {
-       	console.log("nope")
-       }
+				var message = UT.decrypt(obj.message, "This is a test");
 
-   }
-}
+				console.log(message)
+			} else {
+				console.log("nope")
+			}
+
+		}
+	}
 
 
 }, function (errorObject) {
