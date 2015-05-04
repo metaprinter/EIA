@@ -26,7 +26,7 @@ function init() {
 
 		var url = makeURL();
 
-		var tMessage = 'Everything is awesome - test/index.html#'+url+'"</a>'
+		var tMessage = "Everything is awesome - test/index.html#"+url
 
 		cMessage.append(tMessage);
 
