@@ -26,7 +26,7 @@ function init() {
 
 		var url = makeURL();
 
-		var tMessage = "Everything is awesome - test/index.html#"+url
+		var tMessage = "Everything is awesome"
 
 		cMessage.append(tMessage);
 
@@ -35,6 +35,7 @@ function init() {
 	    var tweetBtn = $('<a></a>')
 	        .addClass('twitter-share-button')
 	        .attr('href', 'http://twitter.com/share')
+	        .attr('data-url', 'http://test/index.html#'+url)
 	        .attr('data-text', tMessage);
 	    $('#tweetBtn').append(tweetBtn);
 	    twttr.widgets.load();
