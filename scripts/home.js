@@ -45,11 +45,14 @@ function init() {
 
 		encryptMessage = UT.encrypt(secretMessage, "This is a test");
 
-		dataRef.push(
-		{
-			url: url,
-			message: encryptMessage
-		});
+
+		//Remove when we are ready to work with Firebase
+		//
+		// dataRef.push(
+		// {
+		// 	url: url,
+		// 	message: encryptMessage
+		// });
 
 	})
 
