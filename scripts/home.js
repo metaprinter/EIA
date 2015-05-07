@@ -21,11 +21,12 @@ bind_keyboard = function() {
     var combos, key_nodes, keyboard_msg_node, keys, on_down, on_shift_down, on_shift_up, on_up;
     keyboard_msg_node = $('.keyboard .message');
     $('body').bind('keydown', function(e) {
-      console.log("" + e.keyCode + " keyDown");
+      console.log("" + e.keyCode + " keyDown", e);
     }).bind('keyup', function(e) {
       console.log("" + e.keyCode + " keyUp");
     });
     keys = $('.keyboard .key');
+    console.log(keys)
     key_nodes = {};
     $.each(keys, function(_, node) {
       var id, name;
