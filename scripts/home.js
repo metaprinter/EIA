@@ -23,7 +23,7 @@ function init() {
   $('body').bind('keydown', function(e) {
     if (recording) {
         keystrokes.push(keyboardMap[e.keyCode]);
-        $("#rkeystrokes").append( " "+keyboardMap[e.keyCode] );
+        $("#rkeystrokes div").append( " "+keyboardMap[e.keyCode] );
     }
   });
 

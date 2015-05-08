@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template -->
     <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
 
     <!-- CSS Overrides RIVAN -->
     <style type="text/css">
@@ -47,6 +48,15 @@
     .recording {
         background-color: red;
         color: #fff;
+    }
+    #rkeystrokes {
+        background-color: #fff;
+        font-family: 'Anonymous Pro';
+        font-size: 24px;
+        padding: 20px;
+        width: 100%;
+        height: 100px;
+        overflow: auto;
     }
     </style>
 
@@ -88,7 +98,10 @@
 
         <button id="startRecording" class="btn">Start Recording Keystrokes</button>
 
-        <div id="rkeystrokes"></div>
+
+        <div id="rkeystrokes">
+            <div></div>
+        </div>
 
         <input type="submit" value="Encrypt!" id="tweetSubmit" class="btn">
         <!-- Tobias, check out http://jsfiddle.net/chris27/DQw5b/4/ and http://jsfiddle.net/LEBz8/1/ for dynamically updaing the link attributes I could not get these to work -->
