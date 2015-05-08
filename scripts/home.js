@@ -28,12 +28,18 @@ function init() {
   });
 
   $("#startRecording").on("click", function(e) {
-    console.log("Allo")
     e.preventDefault();
 
-    recording = (recording) ? false : true
+    if (recording) {
+      recording = false;
+      $(this).text("Start Recording").removeClass("recording");
+    } else {
+      recording = true;
+      $(this).text("Stop Recording").addClass("recording");
+    }
 
-  });
+
+  })
 
 	$("#tweetSubmit").on("click", function(e) {
 		e.preventDefault();
@@ -62,7 +68,7 @@ function init() {
 		secret.css("display", "none");
 		confirm.css("display", "block");''
 
-		encryptMessage = UT.encrypt(secretMessage, 54344566);
+		encryptMessage = UT.encrypt(secretMessage, keystrokes.toString() );
 
     console.log("allo", encryptMessage)
 
