@@ -85,4 +85,14 @@ function init() {
 
 }
 
-init();
+// init();
+
+Sammy('#secret', function() {
+        
+        // define a 'get' route that will be triggered at '#/path'
+        this.get('#/test', function() {
+          // this context is a Sammy.EventContext
+          this.$element() // $('#main')
+              .html('A new route!');
+        });
+      }).run();
