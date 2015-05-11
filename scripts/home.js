@@ -18,59 +18,59 @@ function makeURL() {
 
 function init() {
 
-  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+ //  window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
 
-  $('body').bind('keydown', function(e) {
-    if (recording) {
-        keystrokes.push(keyboardMap[e.keyCode]);
-        $("#rkeystrokes div").append( " "+keyboardMap[e.keyCode] );
-    }
-  });
+ //  $('body').bind('keydown', function(e) {
+ //    if (recording) {
+ //        keystrokes.push(keyboardMap[e.keyCode]);
+ //        $("#rkeystrokes div").append( " "+keyboardMap[e.keyCode] );
+ //    }
+ //  });
 
-  $("#startRecording").on("click", function(e) {
-    e.preventDefault();
+ //  $("#startRecording").on("click", function(e) {
+ //    e.preventDefault();
 
-    if (recording) {
-      recording = false;
-      $(this).text("Start Recording").removeClass("recording");
-    } else {
-      recording = true;
-      $(this).text("Stop Recording").addClass("recording");
-    }
+ //    if (recording) {
+ //      recording = false;
+ //      $(this).text("Start Recording").removeClass("recording");
+ //    } else {
+ //      recording = true;
+ //      $(this).text("Stop Recording").addClass("recording");
+ //    }
 
 
-  })
+ //  })
 
-	$("#tweetSubmit").on("click", function(e) {
-		e.preventDefault();
-		var secret = $("#secret");
-		var confirm = $("#confirm");
-		var cMessage = $("#finalMessage");
-		var secretMessage = $("#inputPrivate").val();
-		var decryptMessage;
+	// $("#tweetSubmit").on("click", function(e) {
+	// 	e.preventDefault();
+	// 	var secret = $("#secret");
+	// 	var confirm = $("#confirm");
+	// 	var cMessage = $("#finalMessage");
+	// 	var secretMessage = $("#inputPrivate").val();
+	// 	var decryptMessage;
 
-		var url = makeURL();
+	// 	var url = makeURL();
 
-		var tMessage = "Everything is awesome"
+	// 	var tMessage = "Everything is awesome"
 
-		cMessage.append(tMessage);
+	// 	cMessage.append(tMessage);
 
-		 $('#tweetBtn iframe').remove();
-	    // Generate new markup
-	    var tweetBtn = $('<a></a>')
-	        .addClass('twitter-share-button')
-	        .attr('href', 'http://twitter.com/share')
-	        .attr('data-url', 'http://test/index.html#'+url)
-	        .attr('data-text', tMessage);
-	    $('#tweetBtn').append(tweetBtn);
-	    twttr.widgets.load();
+	// 	 $('#tweetBtn iframe').remove();
+	//     // Generate new markup
+	//     var tweetBtn = $('<a></a>')
+	//         .addClass('twitter-share-button')
+	//         .attr('href', 'http://twitter.com/share')
+	//         .attr('data-url', 'http://test/index.html#'+url)
+	//         .attr('data-text', tMessage);
+	//     $('#tweetBtn').append(tweetBtn);
+	//     twttr.widgets.load();
 
-		secret.css("display", "none");
-		confirm.css("display", "block");''
+	// 	secret.css("display", "none");
+	// 	confirm.css("display", "block");''
 
-		encryptMessage = UT.encrypt(secretMessage, keystrokes.toString() );
+	// 	encryptMessage = UT.encrypt(secretMessage, keystrokes.toString() );
 
-    console.log("allo", encryptMessage)
+ //    console.log("allo", encryptMessage)
 
 
 		//Remove when we are ready to work with Firebase
@@ -81,8 +81,22 @@ function init() {
 		// 	message: encryptMessage
 		// });
 
-	})
+	// });
+
+
 
 }
-
-init();
+    ;(function($) {
+      var app = $.sammy(function() {
+        this.get('#/', function() {
+          $('#main').text('');
+        });
+        this.get('#/test', function() {
+          $('#main').text('Hello World');
+        });
+      });
+      $(function() {
+        app.run()
+      });
+    })(jQuery);
+// init();
